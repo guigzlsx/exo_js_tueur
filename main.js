@@ -21,7 +21,7 @@ let Tueur = {
         this.nom +
         " a infligé 15 points de dégâts à " +
         survivant.nom +
-        " mais est mort en le faisant."
+        " mais y a perdu la vie mskn"
       );
     } // Si le nombre aléatoire est supérieur à 0.9, le survivant esquive l'attaque
     else {
@@ -41,6 +41,7 @@ let Survivant = {
 // Tableaux de noms et de caractéristiques pour les survivants
 let nomsSurvivants = ["Nerd", "Sportif", "Blonde", "bogoss", "timide"];
 let caractéristiques = ["intelligent", "fort", "blonde", "charo", "rêveur"];
+
 // Création de cinq survivants avec des noms et caractéristiques aléatoires
 let survivants = [];
 
@@ -53,7 +54,9 @@ for (let i = 0; i < 5; i++) {
   survivants.push(survivant);
 }
 
+// Le tueur passe a l'attaque
 while (Tueur.pv > 0 && survivants.some((survivant) => survivant.pv > 0)) {
+  // pense bête: some est utilisée pour déterminer si au moins un élément dans un tableau satisfait une condition donnée
   let survivant = survivants[Math.floor(Math.random() * survivants.length)];
   let action = Tueur.attaquer(survivant);
   console.log(action);
