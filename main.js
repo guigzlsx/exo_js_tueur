@@ -1,16 +1,21 @@
+// Définition de l'objet Tueur
 let Tueur = {
   nom: "Jason",
   pv: 100,
+  // Fonction d'attaque prenant un survivant en paramètre
   attaquer: function (survivant) {
     let random = Math.random();
+    // Si le nombre aléatoire est inférieur à 0.3, le survivant meurt
     if (random < 0.3) {
       return this.nom + " a tué " + survivant.nom + ".";
-    } else if (random < 0.7) {
+    } // Si le nombre aléatoire est entre 0.3 et 0.7, le survivant perd 10 points de vie
+    else if (random < 0.7) {
       survivant.pv -= 10;
       return (
         this.nom + " a infligé 10 points de dégâts à " + survivant.nom + "."
       );
-    } else if (random < 0.9) {
+    } // Si le nombre aléatoire est entre 0.7 et 0.9, le survivant perd 15 points de vie mais tue le Tueur en le faisant
+    else if (random < 0.9) {
       survivant.pv -= 15;
       return (
         this.nom +
@@ -18,12 +23,14 @@ let Tueur = {
         survivant.nom +
         " mais est mort en le faisant."
       );
-    } else {
+    } // Si le nombre aléatoire est supérieur à 0.9, le survivant esquive l'attaque
+    else {
       return survivant.nom + " a esquivé l'attaque de " + this.nom + ".";
     }
   },
 };
 
+// Définition de l'objet Survivant avec une méthode d'initialisation
 let Survivant = {
   init: function (nom, caractéristique) {
     this.nom = nom + " (" + caractéristique + ")";
@@ -31,8 +38,10 @@ let Survivant = {
   },
 };
 
+// Tableaux de noms et de caractéristiques pour les survivants
 let nomsSurvivants = ["Nerd", "Sportif", "Blonde", "bogoss", "timide"];
 let caractéristiques = ["intelligent", "fort", "blonde", "charo", "rêveur"];
+// Création de cinq survivants avec des noms et caractéristiques aléatoires
 let survivants = [];
 
 for (let i = 0; i < 5; i++) {
